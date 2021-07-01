@@ -4,64 +4,56 @@ downloads: ~/.ansible-downloads/
 configure_dotfiles: true
 configure_terminal: true
 configure_osx: true
+configure_sublime: false
 
 # Set to 'true' to configure the Dock via dockutil.
-configure_dock: false
-dockitems_remove: []
-# - Launchpad
-# - TV
-# - Podcasts
-# - 'App Store'
-dockitems_persist: []
-# - name: "Sublime Text"
-#   path: "/Applications/Sublime Text.app/"
-#   pos: 5
+configure_dock: true
+dockitems_remove:
+  - Launchpad
+  - TV
+  - Podcasts
+  - "App Store"
+  - "System Preferences"
+  - Contacts
+  - Reminders
+  - Music
+dockitems_persist:
+  - name: "Google Chrome"
+    path: "/Applications/Google Chrome.app"
+    pos: 2
+  - name: "Firefox"
+    path: "/Applications/Firefox.app"
+    pos: 3
+  - name: "Evernote"
+    path: "/Applications/Evernote.app"
+    pos: 11
 
-configure_sudoers: false
-sudoers_custom_config: ''
-# Example:
-# sudoers_custom_config: |
-#   # Allow users in admin group to use sudo with no password.
-#   %admin ALL=(ALL) NOPASSWD: ALL
+configure_sudoers: true
+sudoers_custom_config: |
+  # Allow users in admin group to use sudo with no password.
+  %admin ALL=(ALL) NOPASSWD: ALL
 
-dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
+dotfiles_repo: https://github.com/mathobal/dotfiles.git
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
+dotfiles_repo_local_destination: ~/Development/dotfiles
 dotfiles_files:
   - .zshrc
   - .gitignore
   - .inputrc
   - .osx
   - .vimrc
+  - .gitconfig
 
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
-  - autoconf
-  - bash-completion
-  - doxygen
-  - gettext
-  - gifsicle
   - git
   - github/gh/gh
-  - go
   - gpg
-  - httpie
   - iperf
-  - libevent
-  - sqlite
-  - mcrypt
   - nmap
-  - node
-  - nvm
-  - php
-  - ssh-copy-id
-  - cowsay
-  - readline
   - openssl
-  - pv
   - wget
-  - wrk
   - zsh-history-substring-search
+  - pyenv
 
 homebrew_taps:
   - homebrew/core
@@ -69,21 +61,30 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - chromedriver
   - docker
-  - dropbox
   - firefox
   - google-chrome
-  - handbrake
-  - licecap
-  - sequel-ace
-  - slack
-  - sublime-text
   - transmit
-  - vagrant
+  - visual-studio-code
+  - 1password
+  - alfred
+  - evernote
+  - iterm2
+  - keybase
+#  - microsoft-office
 
 # See `geerlingguy.mas` role documentation for usage instructions.
-mas_installed_apps: []
+mas_installed_apps:
+  - { id: 405399194, name: "Kindle (1.31.0)" }
+  - { id: 1230249825, name: "VMware Remote Console(12.0.0)" }
+  - { id: 1289197285, name: "MindNode (2021.2.2)" }
+  #  - { id: 497799835, name: "Xcode (12.5.1)" }
+  - { id: 1453365242, name: "Brother P-touch Editor (5.3.6)" }
+  - { id: 1303222628, name: "Paprika Recipe Manager 3 (3.6.4)" }
+  - { id: 1278508951, name: "Trello (2.12.1)" }
+  - { id: 1564329434, name: "Momentum (2.2.14)" }
+  - { id: 1096128050, name: "PomoDone App (1.5.23)" }
+  - { id: 1055511498, name: "Day One (6.5)" }
 mas_email: ""
 mas_password: ""
 
@@ -108,24 +109,6 @@ pip_packages: []
 # - name: mkdocs
 #   state: present # present/absent/latest, default: present
 #   version: "0.16.3" # default: N/A
-
-# Set to 'true' to configure Sublime Text.
-configure_sublime: false
-sublime_base_path: '~/Library/Application Support/Sublime Text'
-sublime_config_path: "Packages/User"
-sublime_package_control:
-  - "DocBlockr"
-  - "Dockerfile Syntax Highlighting"
-  - "FileDiffs"
-  - "GitHub Flavored Markdown Preview"
-  - "Jinja2"
-  - "Package Control"
-  - "PHP-Twig"
-  - "Pretty JSON"
-  - "SublimeLinter"
-  - "SublimeLinter-contrib-yamllint"
-  - "TrailingSpaces"
-  - "WordCount"
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
